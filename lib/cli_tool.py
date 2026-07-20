@@ -1,5 +1,5 @@
 import argparse
-from models import Task, User
+from lib.models import Task, User
 
 users = {}
 
@@ -14,14 +14,14 @@ def add_task(args):
 def complete_task(args):
     user = users.get(args.user)
     if not user:
-        print(" User not found.")
+        print("❌ User not found.")
         return
 
     task = user.get_task_by_title(args.title)
     if task:
         task.complete()
     else:
-        print(" Task not found.")
+        print("❌ Task not found.")
 
 
 def main():
